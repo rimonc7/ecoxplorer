@@ -1,17 +1,43 @@
-import { NavLink } from "react-router-dom";
-
-
-
+import { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Nav = () => {
+
+    const { user, logOut } = useContext(AuthContext)
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                console.log('user SignOut')
+                navigate('/');
+            })
+            .catch((error) => {
+                console.log(error.message)
+            })
+    }
+
+    console.log(user)
 
     const links = <div className="space-x-3">
         <NavLink to="/" className="btn bg-green-400 text-white">Home</NavLink>
         <NavLink to="/adventure-type" className="btn bg-green-400 text-white ">Adventure Types</NavLink>
-        <NavLink to="update-profile" className="btn bg-green-400 text-white">Update Profile</NavLink>
-        <NavLink to="profile" className="btn bg-green-400 text-white">My Profile</NavLink>
-        <NavLink to="login" className="btn bg-green-400 text-white">Login</NavLink>
-        <NavLink to="logout" className="btn bg-green-400 text-white">Logout</NavLink>
+        {
+            user ? (
+                <>
+                    <NavLink to="/update-profile" className="btn bg-green-400 text-white">Update Profile</NavLink>
+                    <NavLink to="/profile" className="btn bg-green-400 text-white">My Profile</NavLink>
+                    <NavLink onClick={handleLogOut} to='/logout' className="btn bg-green-400 text-white">Logout</NavLink>
+                </>
+            ) : (
+                <>
+                    <NavLink to="/auth/register" className="btn bg-green-400 text-white">Register</NavLink>
+                    <NavLink to="/auth/login" className="btn bg-green-400 text-white">Login</NavLink>
+                </>
+            )
+        }
+
     </div>
 
     return (
@@ -46,7 +72,7 @@ const Nav = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-               <img className="w-12 h-12 rounded-full" src="https://i.ibb.co.com/SfM33jM/Virat.jpg" alt="" />
+                <img className="w-12 h-12 rounded-full" src="https://i.ibb.co.com/SfM33jM/Virat.jpg" alt="" />
             </div>
         </div>
     );
