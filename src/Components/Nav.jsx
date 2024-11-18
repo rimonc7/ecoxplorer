@@ -18,8 +18,6 @@ const Nav = () => {
             })
     }
 
-    console.log(user)
-
     const links = <div className="space-x-3">
         <NavLink to="/" className="btn bg-green-400 text-white">Home</NavLink>
         <NavLink to="/adventure-type" className="btn bg-green-400 text-white ">Adventure Types</NavLink>
@@ -72,8 +70,15 @@ const Nav = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <img className="w-12 h-12 rounded-full" src="https://i.ibb.co.com/SfM33jM/Virat.jpg" alt="" />
+                {user && <p>{user?.email}</p>}
+                <img
+                    className="w-12 h-12 rounded-full"
+                    src="https://i.ibb.co/SfM33jM/Virat.jpg"
+                    alt="User Avatar"
+                    title={user?.displayName || "User"}
+                />
             </div>
+
         </div>
     );
 };

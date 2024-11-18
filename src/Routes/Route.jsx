@@ -6,11 +6,15 @@ import Home from "../Components/Pages/Home/Home";
 import AuthLayout from "../LayOut/AuthLayout";
 import Login from "../Components/Pages/Auth/Login";
 import Register from "../Components/Pages/Auth/Register";
+import NotFound from "../Components/NotFound/NotFound";
+import Profile from "../Components/Pages/Profile/Profile";
+import PrivateRoutes from "./PrivateRoutes";
 
 const Route = createBrowserRouter([
     {
         path: "/",
         element: <HomeLayOut></HomeLayOut>,
+        errorElement: <NotFound></NotFound>,
         children: [
             {
                 path: "/",
@@ -31,6 +35,10 @@ const Route = createBrowserRouter([
                 element: <Register></Register>
             }
         ]
+    },
+    {
+        path: "/profile",
+        element: <PrivateRoutes><Profile></Profile></PrivateRoutes>
     }
 ]);
 

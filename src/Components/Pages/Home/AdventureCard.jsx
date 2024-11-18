@@ -16,7 +16,7 @@ const AdventureCard = ({ singleData }) => {
                 </h2>
                 <p className="text-gray-600">
                     {
-                        EcoFriendlyFeatures.map((EcoFriendlyFeature, index) => <li>{EcoFriendlyFeature}</li>)
+                        EcoFriendlyFeatures.map((EcoFriendlyFeature, index) => <li key={index}>{EcoFriendlyFeature}</li>)
                     }
                 </p>
                 <div className="card-actions justify-end">

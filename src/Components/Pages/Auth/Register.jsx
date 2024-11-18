@@ -1,8 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
     const { createUser } = useContext(AuthContext)
+    const [errorMessage, setErrorMessage] = useState("");
+    // const [showPass, SetPass] = useState(false)
+    const navigate = useNavigate()
 
     const handleCreateUser = (e) => {
         e.preventDefault()
@@ -10,12 +14,30 @@ const Register = () => {
         const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
+
+        setErrorMessage("")
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+        if (!passwordRegex.test(password)) {
+            setErrorMessage("Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, and one special character.");
+            return;
+        }
+
+
+        if (password.length < 6) {
+            setErrorMessage('Password should longer than 6 characters')
+            return
+        }
+
         createUser(email, password)
             .then(result => {
                 console.log(result.user)
+                navigate("/")
+
             })
             .catch(error => {
-                console.log(error.message)
+                alert(error.message)
             })
     }
 
@@ -49,15 +71,20 @@ const Register = () => {
                         </label>
                         <input type="password" placeholder="password" name="password" className="input input-bordered" required />
                         <label className="label">
-                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                            <p className="text-xs">Already Have an Account? <Link to="/auth/login" className=" text-green-400"> Login Here</Link></p>
                         </label>
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary">Login</button>
+                        <button className="btn btn-primary">Create Profile</button>
                     </div>
                 </form>
-            </div>
+                <div className="m-3">
+                    {
+                        errorMessage && <p className="text-red-500">{errorMessage}</p>
+                    }
+                </div>
 
+            </div>
         </div>
 
     );
