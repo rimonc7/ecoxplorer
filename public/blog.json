@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Exploring the Untouched Rainforests of Costa Rica",
+        "author": "Samantha Green",
+        "shortDescription": "Dive into the lush, biodiverse rainforests of Costa Rica. Discover hidden waterfalls, exotic wildlife, and the importance of sustainable travel in preserving these pristine ecosystems.",
+        "image": "https://i.ibb.co.com/Csx9m1Q/Blog-img-3-600x400.jpg",
+        "publishedDate": "2024-11-01"
+    },
+    {
+        "title": "Conquering the Majestic Himalayan Peaks",
+        "author": "Rajesh Kapoor",
+        "shortDescription": "An exhilarating journey through the Himalayas, exploring eco-friendly trekking routes, ancient monasteries, and breathtaking mountain vistas while promoting responsible adventure tourism.",
+        "image": "https://i.ibb.co.com/fHhpCVD/Blog-img-1-600x400.jpg",
+        "publishedDate": "2024-10-15"
+    },
+    {
+        "title": "Kayaking Through the Mangroves of Southeast Asia",
+        "author": "Emily Rivera",
+        "shortDescription": "Paddle your way through serene mangrove forests in Southeast Asia. Learn about their critical role in marine ecosystems and how eco-adventures contribute to their conservation.",
+        "image": "https://i.ibb.co.com/jD3kttr/Blog-img-2-600x400.jpg",
+        "publishedDate": "2024-09-28"
+    }
+]
