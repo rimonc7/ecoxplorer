@@ -1,0 +1,171 @@
+[
+    {
+      "AdventureTitle": "Rainforest Trekking",
+      "Image": "https://i.ibb.co.com/2yg58hR/Jungle-Trekking-Sumatra-Tiger-Trek-Bukit-Lintang.jpg",
+      "ID": 101,
+      "CategoryName": "Hiking",
+      "ShortDescription": "Explore the lush rainforest trails and discover breathtaking waterfalls.",
+      "AdventureCost": 120,
+      "BookingAvailability": true,
+      "Location": "Amazon Rainforest, Brazil",
+      "Duration": "2 Days, 1 Night",
+      "AdventureLevel": "Moderate",
+      "IncludedItems": [
+        "Guided tour",
+        "Meals",
+        "Overnight camping equipment"
+      ],
+      "EcoFriendlyFeatures": [
+        "Leave-no-trace principles",
+        "Reusable utensils",
+        "Eco-certified guides"
+      ],
+      "MaxGroupSize": 12,
+      "SpecialInstructions": [
+        "Wear sturdy hiking boots",
+        "Bring insect repellent",
+        "Carry a reusable water bottle"
+      ]
+    },
+    {
+      "AdventureTitle": "Coral Reef Snorkeling",
+      "Image": "https://i.ibb.co.com/vXK1qr1/image1-1024x683-png.webp",
+      "ID": 102,
+      "CategoryName": "Water Adventures",
+      "ShortDescription": "Snorkel through vibrant coral reefs and encounter diverse marine life.",
+      "AdventureCost": 85,
+      "BookingAvailability": true,
+      "Location": "Great Barrier Reef, Australia",
+      "Duration": "Half-Day",
+      "AdventureLevel": "Easy",
+      "IncludedItems": [
+        "Snorkeling gear",
+        "Life jacket",
+        "Marine biologist guide"
+      ],
+      "EcoFriendlyFeatures": [
+        "Marine-safe sunscreen provided",
+        "Zero single-use plastics",
+        "Sustainable tourism practices"
+      ],
+      "MaxGroupSize": 8,
+      "SpecialInstructions": [
+        "Avoid touching coral",
+        "Bring a waterproof camera",
+        "Stay hydrated"
+      ]
+    },
+    {
+      "AdventureTitle": "Wildlife Safari",
+      "Image": "https://i.ibb.co.com/XbnJB3T/shutterstock-102202495.jpg",
+      "ID": 103,
+      "CategoryName": "Wildlife",
+      "ShortDescription": "Witness the majestic wildlife in their natural habitat during a guided safari.",
+      "AdventureCost": 250,
+      "BookingAvailability": true,
+      "Location": "Serengeti National Park, Tanzania",
+      "Duration": "3 Days, 2 Nights",
+      "AdventureLevel": "Moderate",
+      "IncludedItems": [
+        "All meals and beverages",
+        "Luxury tent accommodation",
+        "Professional wildlife guide"
+      ],
+      "EcoFriendlyFeatures": [
+        "Solar-powered camps",
+        "Wildlife conservation donations",
+        "Eco-friendly transportation"
+      ],
+      "MaxGroupSize": 10,
+      "SpecialInstructions": [
+        "Wear neutral-colored clothing",
+        "Bring binoculars",
+        "Respect wildlife distances"
+      ]
+    },
+    {
+      "AdventureTitle": "Kayaking Through Mangroves",
+      "Image": "https://i.ibb.co.com/zVPnsNH/kayak-tour-mangrove-tunnels.webp",
+      "ID": 104,
+      "CategoryName": "Water Adventures",
+      "ShortDescription": "Paddle through serene mangrove forests and observe unique ecosystems.",
+      "AdventureCost": 70,
+      "BookingAvailability": false,
+      "Location": "Everglades National Park, USA",
+      "Duration": "3 Hours",
+      "AdventureLevel": "Easy",
+      "IncludedItems": [
+        "Kayak and paddle",
+        "Life jacket",
+        "Experienced guide"
+      ],
+      "EcoFriendlyFeatures": [
+        "No motorized boats",
+        "Support for mangrove conservation",
+        "Plastic-free snacks"
+      ],
+      "MaxGroupSize": 6,
+      "SpecialInstructions": [
+        "Wear water-resistant clothing",
+        "Bring a hat and sunscreen",
+        "Avoid littering"
+      ]
+    },
+    {
+      "AdventureTitle": "Mountain Biking Adventure",
+      "Image": "https://i.ibb.co.com/P9CngST/DE3-A3918-73.jpg",
+      "ID": 105,
+      "CategoryName": "Biking",
+      "ShortDescription": "Ride through rugged mountain trails with panoramic views.",
+      "AdventureCost": 95,
+      "BookingAvailability": true,
+      "Location": "Rocky Mountains, Canada",
+      "Duration": "Full-Day",
+      "AdventureLevel": "Challenging",
+      "IncludedItems": [
+        "Mountain bike",
+        "Helmet",
+        "Trail snacks"
+      ],
+      "EcoFriendlyFeatures": [
+        "Promotes local trail maintenance",
+        "Minimized trail impact",
+        "Plastic-free hydration options"
+      ],
+      "MaxGroupSize": 10,
+      "SpecialInstructions": [
+        "Check bike gear before starting",
+        "Carry energy bars",
+        "Stay on marked trails"
+      ]
+    },
+    {
+      "AdventureTitle": "Desert Camel Caravan",
+      "Image": "https://i.ibb.co.com/KmKgv0H/desert-camel.jpg",
+      "ID": 106,
+      "CategoryName": "Cultural Experiences",
+      "ShortDescription": "Journey through vast desert landscapes with a guided camel trek.",
+      "AdventureCost": 150,
+      "BookingAvailability": true,
+      "Location": "Sahara Desert, Morocco",
+      "Duration": "2 Days, 1 Night",
+      "AdventureLevel": "Moderate",
+      "IncludedItems": [
+        "Camel ride",
+        "Meals and drinks",
+        "Overnight desert camp"
+      ],
+      "EcoFriendlyFeatures": [
+        "Solar lanterns at camps",
+        "Use of traditional materials",
+        "Local cultural preservation"
+      ],
+      "MaxGroupSize": 15,
+      "SpecialInstructions": [
+        "Pack lightweight clothing",
+        "Bring a scarf for dust",
+        "Stay hydrated"
+      ]
+    }
+  ]
+  

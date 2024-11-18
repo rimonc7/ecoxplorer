@@ -6,12 +6,12 @@ import { NavLink } from "react-router-dom";
 const Nav = () => {
 
     const links = <div className="space-x-3">
-        <NavLink to="/" className="btn bg-[#F0F8FF]">Home</NavLink>
-        <NavLink to="/adventure-type" className="btn bg-[#F0F8FF]">Adventure Types</NavLink>
-        <NavLink to="update-profile" className="btn bg-[#F0F8FF]">Update Profile</NavLink>
-        <NavLink to="profile" className="btn bg-[#F0F8FF]">My Profile</NavLink>
-        <NavLink to="login" className="btn bg-[#F0F8FF]">Login</NavLink>
-        <NavLink to="logout" className="btn bg-[#F0F8FF]">Logout</NavLink>
+        <NavLink to="/" className="btn bg-green-400">Home</NavLink>
+        <NavLink to="/adventure-type" className="btn bg-green-400 ">Adventure Types</NavLink>
+        <NavLink to="update-profile" className="btn bg-green-400">Update Profile</NavLink>
+        <NavLink to="profile" className="btn bg-green-400">My Profile</NavLink>
+        <NavLink to="login" className="btn bg-green-400">Login</NavLink>
+        <NavLink to="logout" className="btn bg-green-400">Logout</NavLink>
     </div>
 
     return (
@@ -38,7 +38,7 @@ const Nav = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl font-bold">EcoXplorer</a>
+                <a className="btn btn-ghost text-xl font-bold text-green-400">EcoXplorer</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
