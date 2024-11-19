@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import { FaUserCircle } from "react-icons/fa";
+
 
 const Nav = () => {
 
     const { user, logOut } = useContext(AuthContext)
     const navigate = useNavigate();
-
     const handleLogOut = () => {
         logOut()
             .then(() => {
@@ -17,7 +18,6 @@ const Nav = () => {
                 console.log(error.message)
             })
     }
-
     const links = <div className="space-x-3">
         <NavLink to="/" className="btn bg-green-400 text-white">Home</NavLink>
         <NavLink to="/adventure-type" className="btn bg-green-400 text-white ">Adventure Types</NavLink>
@@ -70,15 +70,17 @@ const Nav = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {user && <p>{user?.email}</p>}
-                <img
-                    className="w-12 h-12 rounded-full"
-                    src="https://i.ibb.co/SfM33jM/Virat.jpg"
-                    alt="User Avatar"
-                    title={user?.displayName || "User"}
-                />
+                {user ? (
+                    <img
+                        className="w-12 h-12 rounded-full"
+                        src={user?.photoURL}
+                        alt="User Avatar"
+                        title={user?.displayName || "User"}
+                    />
+                ) : (
+                    <p className="text-5xl"><FaUserCircle /></p>
+                )}
             </div>
-
         </div>
     );
 };

@@ -1,6 +1,9 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
+import { FcGoogle } from "react-icons/fc";
+
 
 const Register = () => {
     const { createUser } = useContext(AuthContext)
@@ -9,13 +12,14 @@ const Register = () => {
     const navigate = useNavigate()
 
     const handleCreateUser = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+
         const name = e.target.name.value;
         const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        setErrorMessage("")
+        setErrorMessage("");
 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
@@ -24,69 +28,103 @@ const Register = () => {
             return;
         }
 
-
-        if (password.length < 6) {
-            setErrorMessage('Password should longer than 6 characters')
-            return
-        }
-
         createUser(email, password)
             .then(result => {
-                console.log(result.user)
-                navigate("/")
-
+                const user = result.user;
+                return updateProfile(user, {
+                    displayName: name,
+                    photoURL: photo
+                });
+            })
+            .then(() => {
+                navigate("/");
             })
             .catch(error => {
-                alert(error.message)
-            })
-    }
-
+                alert(error.message);
+            });
+    };
 
     return (
-        <div>
-            <h2 className="text-2xl font-bold text-center mt-12">Register Your Account</h2>
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-10">
-                <form onSubmit={handleCreateUser} className="card-body">
+        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+            <div className="card bg-white w-full max-w-md rounded-lg shadow-lg p-8">
+                <h2 className="text-3xl font-bold text-center text-gray-700 mb-6">
+                    Register Your Account
+                </h2>
+
+                <form onSubmit={handleCreateUser} className="space-y-4">
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Your Name</span>
+                            <span className="label-text font-semibold text-gray-600">Your Name</span>
                         </label>
-                        <input type="text" placeholder="name" name="name" className="input input-bordered" required />
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter your name"
+                            className="input input-bordered w-full border-gray-300 rounded-lg focus:ring focus:ring-blue-300"
+                            required
+                        />
                     </div>
+
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Photo URL</span>
+                            <span className="label-text font-semibold text-gray-600">Photo URL</span>
                         </label>
-                        <input type="text" placeholder="photo url" name="photo" className="input input-bordered" required />
+                        <input
+                            type="text"
+                            name="photo"
+                            placeholder="Enter a photo URL"
+                            className="input input-bordered w-full border-gray-300 rounded-lg focus:ring focus:ring-blue-300"
+                            required
+                        />
                     </div>
+
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Email</span>
+                            <span className="label-text font-semibold text-gray-600">Email</span>
                         </label>
-                        <input type="email" placeholder="email" name="email" className="input input-bordered" required />
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            className="input input-bordered w-full border-gray-300 rounded-lg focus:ring focus:ring-blue-300"
+                            required
+                        />
                     </div>
+
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Password</span>
+                            <span className="label-text font-semibold text-gray-600">Password</span>
                         </label>
-                        <input type="password" placeholder="password" name="password" className="input input-bordered" required />
-                        <label className="label">
-                            <p className="text-xs">Already Have an Account? <Link to="/auth/login" className=" text-green-400"> Login Here</Link></p>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Enter a secure password"
+                            className="input input-bordered w-full border-gray-300 rounded-lg focus:ring focus:ring-blue-300"
+                            required
+                        />
+                        <label className="label mt-2">
+                            <p className="text-sm text-gray-500">
+                                Already have an account?{" "}
+                                <Link to="/auth/login" className="text-blue-500 hover:underline">
+                                    Login Here
+                                </Link>
+                            </p>
                         </label>
                     </div>
-                    <div className="form-control mt-6">
-                        <button className="btn btn-primary">Create Profile</button>
+
+                    <div className="form-control mt-4">
+                        <button className="btn btn-primary w-full border-none bg-green-400 text-white rounded-lg py-2 hover:bg-[#87CEEB]">
+                            Create Profile
+                        </button>
                     </div>
                 </form>
-                <div className="m-3">
-                    {
-                        errorMessage && <p className="text-red-500">{errorMessage}</p>
-                    }
-                </div>
-
+                {errorMessage && (
+                    <div className="mt-4 text-center">
+                        <p className="text-red-500">{errorMessage}</p>
+                    </div>
+                )}
             </div>
         </div>
-
     );
 };
 
