@@ -9,6 +9,7 @@ import Register from "../Components/Pages/Auth/Register";
 import NotFound from "../Components/NotFound/NotFound";
 import Profile from "../Components/Pages/Profile/Profile";
 import PrivateRoutes from "./PrivateRoutes";
+import AdventureDetails from "../Components/Pages/AdventureDetails";
 
 const Route = createBrowserRouter([
     {
@@ -39,6 +40,11 @@ const Route = createBrowserRouter([
     {
         path: "/profile",
         element: <PrivateRoutes><Profile></Profile></PrivateRoutes>
+    },
+    {
+        path: "plan/:ID",
+        element: <PrivateRoutes><AdventureDetails></AdventureDetails></PrivateRoutes>,
+        loader: () => fetch("/data.json")
     }
 ]);
 
