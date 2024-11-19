@@ -5,7 +5,6 @@ import { app } from "../Firebase/firebase.config";
 export const AuthContext = createContext(null)
 
 const auth = getAuth(app);
-
 const GoogleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
@@ -30,7 +29,7 @@ const AuthProvider = ({ children }) => {
 
     const signUpGmail = () => {
         setLoader(true);
-       return signInWithPopup(auth, GoogleProvider)
+        return signInWithPopup(auth, GoogleProvider)
     }
 
 
@@ -58,7 +57,7 @@ const AuthProvider = ({ children }) => {
         user,
         loader,
         auth,
-        signUpGmail
+        signUpGmail,
     }
     return (
         <AuthContext.Provider value={authInfo}>

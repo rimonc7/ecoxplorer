@@ -2,14 +2,15 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
-import { FcGoogle } from "react-icons/fc";
-
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext)
+    const { createUser,} = useContext(AuthContext)
     const [errorMessage, setErrorMessage] = useState("");
-    // const [showPass, SetPass] = useState(false)
     const navigate = useNavigate()
+    const [showPass, SetShowPass] = useState(false)
+
 
     const handleCreateUser = (e) => {
         e.preventDefault();
@@ -43,6 +44,7 @@ const Register = () => {
                 alert(error.message);
             });
     };
+
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -92,16 +94,15 @@ const Register = () => {
                     </div>
 
                     <div className="form-control">
-                        <label className="label">
-                            <span className="label-text font-semibold text-gray-600">Password</span>
+                        <label className="input input-bordered flex items-center gap-2 border-gray-300  focus:ring focus:ring-blue-300">
+                            <input type={showPass ? "text" : "password"} name="password" className="grow" />
+                            <button onClick={() => SetShowPass(!showPass)} >
+                                {
+                                    showPass ? <FaEyeSlash /> : <FaEye />
+
+                                }
+                            </button>
                         </label>
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Enter a secure password"
-                            className="input input-bordered w-full border-gray-300 rounded-lg focus:ring focus:ring-blue-300"
-                            required
-                        />
                         <label className="label mt-2">
                             <p className="text-sm text-gray-500">
                                 Already have an account?{" "}
