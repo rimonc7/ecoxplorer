@@ -41,7 +41,7 @@ const Register = () => {
                 navigate("/");
             })
             .catch(error => {
-                alert(error.message);
+                setErrorMessage(error.message);
             });
     };
 

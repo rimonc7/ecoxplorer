@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
@@ -9,47 +9,50 @@ import { sendPasswordResetEmail } from "firebase/auth";
 
 const Login = () => {
 
-    const { auth, userLogin, signUpGmail } = useContext(AuthContext)
+    const { auth, userLogin, signUpGmail, errorMessage, setErrorMessage } = useContext(AuthContext)
     const navigate = useNavigate();
     const [showPass, SetShowPass] = useState(false)
     const emailRef = useRef();
 
+    useEffect(() => {
+        document.title = 'Login';
+    })
 
     const handleLogin = (e) => {
         e.preventDefault()
+        setErrorMessage("");
         const email = e.target.email.value;
         const password = e.target.password.value;
         userLogin(email, password)
             .then(result => {
-                console.log(result.user)
                 e.target.reset()
                 navigate("/")
             })
             .catch(error => {
-                console.log(error.message)
+                errorMessage(error.message)
             })
     }
     const handleSignUpGmail = () => {
+        setErrorMessage("");
         signUpGmail()
             .then((result) => {
-                console.log(result.user)
                 navigate("/")
             })
             .catch(error => {
-                console.log(error.message)
+                errorMessage(error.message)
             })
 
     }
 
     const handleForgetPassword = () => {
+        setErrorMessage("");
         const email = emailRef.current.value;
         sendPasswordResetEmail(auth, email)
             .then(() => {
-               alert("Password Reset Mail Sent, Check your Mail Please")
+                alert("Password Reset Mail Sent, Check your Mail Please")
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                errorMessage(error.message);
             });
     }
 
@@ -118,6 +121,11 @@ const Login = () => {
                     </Link>
                 </p>
             </div>
+            {errorMessage && (
+                <div className="mt-4 text-center">
+                    <p className="text-red-500">{errorMessage}</p>
+                </div>
+            )}
         </div>
     );
 };
