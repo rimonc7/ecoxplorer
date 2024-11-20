@@ -10,6 +10,7 @@ import NotFound from "../Components/NotFound/NotFound";
 import Profile from "../Components/Pages/Profile/Profile";
 import PrivateRoutes from "./PrivateRoutes";
 import AdventureDetails from "../Components/Pages/AdventureDetails";
+import UpdateProfile from "../Components/Pages/Profile/UpdateProfile";
 
 const Route = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const Route = createBrowserRouter([
     {
         path: "/profile",
         element: <PrivateRoutes><Profile></Profile></PrivateRoutes>
+    },
+    {
+        path: "/update-profile",
+        element: <PrivateRoutes> <UpdateProfile></UpdateProfile> </PrivateRoutes>
     },
     {
         path: "plan/:ID",

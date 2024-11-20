@@ -1,16 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 
 const Login = () => {
 
-    const { userLogin, signUpGmail } = useContext(AuthContext)
+    const { auth, userLogin, signUpGmail } = useContext(AuthContext)
     const navigate = useNavigate();
     const [showPass, SetShowPass] = useState(false)
+    const emailRef = useRef();
 
 
     const handleLogin = (e) => {
@@ -39,6 +41,19 @@ const Login = () => {
 
     }
 
+    const handleForgetPassword = () => {
+        const email = emailRef.current.value;
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+               alert("Password Reset Mail Sent, Check your Mail Please")
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
+    }
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="card bg-white w-full max-w-sm rounded-lg shadow-lg p-6">
@@ -51,6 +66,7 @@ const Login = () => {
                         <input
                             type="email"
                             name="email"
+                            ref={emailRef}
                             placeholder="Enter your email"
                             className="input input-bordered w-full border-gray-300 rounded-lg focus:ring focus:ring-blue-300"
                             required
@@ -77,7 +93,7 @@ const Login = () => {
                             </button>
                         </label>
                         <label className="label">
-                            <a href="#" className="label-text-alt link link-hover text-blue-500">Forgot password?</a>
+                            <button onClick={handleForgetPassword} className="label-text-alt link link-hover text-blue-500">Forgot password?</button>
                         </label>
                     </div>
                     <div className="form-control mt-4">

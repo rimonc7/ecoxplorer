@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FaUserCircle } from "react-icons/fa";
 
@@ -19,14 +19,12 @@ const Nav = () => {
             })
     }
     const links = <div className="space-x-3">
-        <NavLink to="/" className="btn bg-green-400 text-white">Home</NavLink>
-        <NavLink to="/adventure-type" className="btn bg-green-400 text-white ">Adventure Types</NavLink>
-        {
+        <NavLink to="/" className="btn bg-green-400 text-white">Home</NavLink>        {
             user ? (
                 <>
                     <NavLink to="/update-profile" className="btn bg-green-400 text-white">Update Profile</NavLink>
                     <NavLink to="/profile" className="btn bg-green-400 text-white">My Profile</NavLink>
-                    <NavLink onClick={handleLogOut} to='/logout' className="btn bg-green-400 text-white">Logout</NavLink>
+                    <button onClick={handleLogOut} className="btn bg-green-400 text-white">Logout</button>
                 </>
             ) : (
                 <>
@@ -62,7 +60,7 @@ const Nav = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-2xl font-bold text-green-400">EcoXplorer</a>
+                <Link to="/" className="btn btn-ghost hover:bg-transparent text-2xl font-bold text-green-400">EcoXplorer</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
