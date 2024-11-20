@@ -4,12 +4,27 @@ import Footer from "../Footer";
 import { FaCheckCircle } from "react-icons/fa";
 import { BsSun } from "react-icons/bs";
 import { AiOutlineWarning } from "react-icons/ai";
+import moment from 'moment';
 
 const AdventureDetails = () => {
     const data = useLoaderData();
     const { ID } = useParams();
 
     const matchedAdventure = data.find((item) => item.ID === parseInt(ID));
+
+    const handleTalkToExpert = () => {
+        const currentTime = moment();
+        const startTime = moment('10:00 AM', 'hh:mm A');
+        const endTime = moment('8:00 PM', 'hh:mm A');
+
+        if (currentTime.isBetween(startTime, endTime)) {
+            window.open("https://meet.google.com/", "_blank");
+        } else {
+            document.getElementById('my_modal_5').showModal();
+        }
+    }
+
+
 
     return (
         <div>
@@ -54,7 +69,7 @@ const AdventureDetails = () => {
                                         <strong className="text-gray-800">Max Group Size:</strong> {matchedAdventure.MaxGroupSize}
                                     </p>
                                 </div>
-                                <button className="mt-8 px-6 py-3 bg-gradient-to-r from-[#87CEEB] to-green-400 text-white text-lg font-semibold rounded-lg shadow-md hover:shadow-lg hover:from-[#87CEEB] hover:to-blue-700 transition duration-300 ease-in-out">
+                                <button onClick={handleTalkToExpert} className="mt-8 px-6 py-3 bg-gradient-to-r from-[#87CEEB] to-green-400 text-white text-lg font-semibold rounded-lg shadow-md hover:shadow-lg hover:from-[#87CEEB] hover:to-blue-700 transition duration-300 ease-in-out">
                                     Talk with Expert
                                 </button>
                             </div>
@@ -107,6 +122,18 @@ const AdventureDetails = () => {
                 ) : (
                     <p className="text-center text-red-500 text-2xl mt-20">Adventure not found.</p>
                 )}
+                {/* modal */}
+                <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">Out of Office Hours</h3>
+                        <p className="py-4">Sorry, we are only available between 10:00 AM and 8:00 PM.</p>
+                        <div className="modal-action">
+                            <form method="dialog">
+                                <button className="btn">Close</button>
+                            </form>
+                        </div>
+                    </div>
+                </dialog>
             </main>
             <footer>
                 <Footer />
